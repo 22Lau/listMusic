@@ -1,0 +1,181 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap');
+/* Variables */
+:root {
+  --primary-color: #2D2E2F;
+  --secondary-color: #3884ff;
+  --background-color: #1C1D1E;
+  --text-color: #FFFFFF;
+}
+
+/* Estilos globales*/
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+/* Estilos reproductor */
+
+/* Cabecera */
+.player .title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+
+  /* Para pantallas pequeñas */
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.player .cover {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 15rem;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0px 20px 50px rgba(0,0,0,0.5);
+    transform: translateY(-50%);
+    position: relative;
+    z-index: 2;
+  
+     /* Para pantallas pequeñas */
+     @media (max-width: 768px) {
+      max-width: 10rem;
+    }
+  }
+
+.player .cover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondary-color);
+  filter: blur(40px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Barra progreso */
+.player .progress-container {
+  margin: 2rem auto;
+  width: 90%;
+  height: 1rem;
+  background-color: #2D2E2F;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.player .progress {
+  height: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 0.5rem;
+  width: 0%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Controles */
+.player .controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.player button-name {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: 0 1.5rem;
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  z-index: 2;
+  position: relative;
+}
+
+.player .play:hover {
+  transform: scale(1.1);
+}
+
+.player .prev::before,
+.player .next::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.player .prev:hover::before,
+.player .next:hover::before {
+  opacity: 1;
+}
+
+.player .prev {
+  margin-left: 3rem;
+}
+
+.player .next {
+  margin-right: 3rem;
+}
+
+.player .songs {
+  margin-top: 3rem;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.player .songs li {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+
+  /* Para pantallas pequeñas */
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+}
+
+.player .songs a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.player .songs a.active {
+  color: var(--secondary-color);
+}
